@@ -36,10 +36,11 @@ The current working direction for a conventional UEFI x86-64 installation is:
 - GPT partition table.
 - EFI System Partition formatted as FAT32.
 - ext4 as the default root filesystem.
-- Prefer a configurable swap file over requiring a dedicated swap partition, while allowing users to choose a partition if their setup calls for it.
-- Treat **hibernation as experimental during the first release**. Linux hibernation can use a swap file, but it needs adequate capacity and correct resume-device/offset and initramfs configuration; support must be tested against hardware and installation layouts rather than assumed.
+- Use a straightforward three-partition layout: an EFI System Partition, a dedicated Linux swap partition, and a root partition using ext4.
+- Use the remaining available disk space for the ext4 root partition after allocating the EFI and swap partitions, unless the user chooses custom sizing.
+- Treat **hibernation as experimental during the first release**. A dedicated swap partition can provide the hibernation target, but it must be large enough for the memory image and configured correctly for resume; compatibility must be tested against hardware rather than assumed.
 
-These are proposed defaults for the installer and documentation, not a claim that every machine has identical storage or hibernation requirements. Swap sizing should be configurable; an 8 GiB allocation was discussed as a possible starting point, not established as a universal requirement.
+These are the proposed defaults for the installer and documentation, not a claim that every machine has identical storage or hibernation requirements. An 8 GiB swap partition was discussed as a possible starting point, not established as a universal requirement. The installer should allow users to adjust partition sizes.
 
 ## Mark II — AI-designed system on an upstream-compatible Linux kernel
 
@@ -86,7 +87,7 @@ The following remain to be designed and should not be treated as settled:
 - The precise division between the lean base installation and optional desktop/customization packages.
 - Mark I's exact Stage 3 variant, kernel configuration, and bootloader.
 - The Calamares installer implementation and its supported partitioning options.
-- Swap-file sizing and hibernation compatibility across hardware.
+- Swap-partition sizing and hibernation compatibility across hardware.
 - The criteria and timing for adding ARM support.
 - Mark II's detailed architecture, system interfaces, and component boundaries.
 - How and when a new package manager should replace or coexist with Portage.
