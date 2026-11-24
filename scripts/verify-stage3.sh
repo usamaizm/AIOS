@@ -35,7 +35,7 @@ if [[ ! "$expected_fingerprint" =~ ^([0-9A-F]{40}|[0-9A-F]{64})$ ]]; then
     exit 2
 fi
 
-for command_name in gpgv sha512sum awk; do
+for command_name in gpgv sha512sum awk grep; do
     if ! command -v "$command_name" >/dev/null 2>&1; then
         printf 'Required command not found: %s\n' "$command_name" >&2
         exit 127
@@ -52,7 +52,6 @@ done
 tar_dir=$(cd -- "$(dirname -- "$tarball")" && pwd -P)
 digest_dir=$(cd -- "$(dirname -- "$digests")" && pwd -P)
 keyring_dir=$(cd -- "$(dirname -- "$keyring")" && pwd -P)
-tar_path="$tar_dir/$(basename -- "$tarball")"
 digest_path="$digest_dir/$(basename -- "$digests")"
 keyring_path="$keyring_dir/$(basename -- "$keyring")"
 tar_name=$(basename -- "$tarball")
