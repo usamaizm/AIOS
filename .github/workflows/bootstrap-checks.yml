@@ -16,5 +16,5 @@ jobs:
           bash -n tests/test-verify-stage3.sh
       - name: Validate usage path
         run: bash scripts/verify-stage3.sh --help
-      - name: Test checksum success and failure paths
+      - name: Test real OpenPGP, fingerprint, and checksum paths
         run: bash tests/test-verify-stage3.sh
