@@ -16,14 +16,30 @@ AIOS is intended to evolve through three generations. The central experiment is 
 - Keep **ARM support** as a future compatibility and porting goal; it is not part of the initial target.
 - Make **KDE Plasma the primary desktop users see when AIOS starts**, so Mark I is a human-usable desktop OS rather than a terminal-first environment.
 - Integrate the AI assistant into the desktop experience, while retaining ordinary desktop and terminal workflows.
+- Keep the distribution's base lean: include only what is needed to boot and run the system; make additional customization and optional capabilities installable layers rather than mandatory base components.
+- Provide a **command-line-oriented experience for beta testers** and a desktop installation/experience aimed at general users. The desktop should be available without making the underlying distribution unnecessarily large.
 - Use Gentoo's **AMD64 desktop/Plasma profile**, selecting the OpenRC variant (the profile path does not include `systemd`; for the current 23.0 profile family this is `default/linux/amd64/23.0/desktop/plasma`).
+- Follow the **Gentoo Handbook** as the canonical guide for installation and system configuration, adapting steps only where AIOS-specific requirements call for it.
 - Use **OpenClaw** as the initial AI agent framework.
 - Use Gentoo's **Portage** package-management system and the `emerge` tool.
 - Build software from source and use Gentoo's configurable build options and flags where appropriate.
 - Verify the authenticity and integrity of the Stage 3 archive before extracting it.
+- Aim for **Calamares** as the graphical installer once the distribution is sufficiently stable. A reliable, repeatable installation path is a Mark I completion milestone, not a prerequisite for the initial bootstrap.
 - Use this generation as the development and experimentation environment for proposing and constructing Mark II.
 
 Gentoo is the initial foundation, not necessarily a permanent constraint on every future generation. The Stage 3 archive provides the initial userspace; kernel, bootloader, hardware configuration, desktop integration, AI-assistant integration, and AIOS-specific services still need to be configured. The selected profile provides Gentoo defaults for a Plasma desktop; it does not by itself complete the desktop installation or configuration.
+
+### Mark I installation and storage direction
+
+The current working direction for a conventional UEFI x86-64 installation is:
+
+- GPT partition table.
+- EFI System Partition formatted as FAT32.
+- ext4 as the default root filesystem.
+- Prefer a configurable swap file over requiring a dedicated swap partition, while allowing users to choose a partition if their setup calls for it.
+- Treat **hibernation as experimental during the first release**. Linux hibernation can use a swap file, but it needs adequate capacity and correct resume-device/offset and initramfs configuration; support must be tested against hardware and installation layouts rather than assumed.
+
+These are proposed defaults for the installer and documentation, not a claim that every machine has identical storage or hibernation requirements. Swap sizing should be configurable; an 8 GiB allocation was discussed as a possible starting point, not established as a universal requirement.
 
 ## Mark II — AI-designed system on an upstream-compatible Linux kernel
 
@@ -58,7 +74,7 @@ Mark III should build on lessons from the earlier generations rather than forcin
 
 | Generation | Foundation / kernel direction | Primary role |
 |---|---|---|
-| Mark I | Gentoo Linux Stage 3; OpenRC; x86-64 first; KDE Plasma as primary desktop; integrated AI assistant; OpenClaw | Human-usable, AI-integrated desktop and development environment |
+| Mark I | Gentoo Linux Stage 3; OpenRC; x86-64 first; KDE Plasma as primary desktop; integrated AI assistant; OpenClaw | Lean, human-usable, AI-integrated distribution and development environment |
 | Mark II | LFS-based construction; upstream-compatible Linux kernel | AI-designed operating system and components |
 | Mark III | Kernel architecture open for exploration | Deeper kernel research and possible alternatives |
 
@@ -67,7 +83,10 @@ Mark III should build on lessons from the earlier generations rather than forcin
 The following remain to be designed and should not be treated as settled:
 
 - The exact responsibilities and permission model of the Mark I AI environment, including how desktop actions are authorized.
+- The precise division between the lean base installation and optional desktop/customization packages.
 - Mark I's exact Stage 3 variant, kernel configuration, and bootloader.
+- The Calamares installer implementation and its supported partitioning options.
+- Swap-file sizing and hibernation compatibility across hardware.
 - The criteria and timing for adding ARM support.
 - Mark II's detailed architecture, system interfaces, and component boundaries.
 - How and when a new package manager should replace or coexist with Portage.
