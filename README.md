@@ -35,3 +35,8 @@ See the `docs/` directory. The next engineering milestone is to publish a concis
 ## License
 
 See [LICENSE](LICENSE) for the applicable terms.
+
+
+## Ecosystem integration
+
+This project is part of a set of independent, interoperable open projects. See the [ecosystem integration contract](https://github.com/usamaizm/AIDB/blob/main/docs/ECOSYSTEM_INTEGRATION.md) for its role, interoperability boundaries, and integration principles.
