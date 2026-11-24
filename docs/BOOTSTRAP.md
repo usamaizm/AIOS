@@ -16,13 +16,14 @@ Always select the current artifact from Gentoo's official distribution directory
 2. Obtain Gentoo's release-signing public key using an official Gentoo key-distribution method.
 3. Verify the full key fingerprint independently against Gentoo's official release-signature information before trusting it.
 4. Create a dedicated keyring containing the verified release key. Do not blindly trust a key merely because it was downloaded from a keyserver.
-5. Run the verification script:
+5. Record the full 40- or 64-character primary-key fingerprint.
+6. Run the verification script:
 
 ```sh
-scripts/verify-stage3.sh \
+bash scripts/verify-stage3.sh \
   /path/to/stage3-amd64-RELEASE-openrc.tar.xz \
   /path/to/stage3-amd64-RELEASE-openrc.tar.xz.DIGESTS.asc \
-  /path/to/trusted-gentoo-release.gpg \\
+  /path/to/trusted-gentoo-release.gpg \
   VERIFIED_GENTOO_RELEASE_KEY_FINGERPRINT
 ```
 
