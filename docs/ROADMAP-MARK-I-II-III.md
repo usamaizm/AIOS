@@ -14,7 +14,8 @@ AIOS is intended to evolve through three generations. The central experiment is 
 - Use **OpenRC** as Mark I's init system. **Do not use systemd.**
 - Target **x86-64 first** for the initial Mark I implementation.
 - Keep **ARM support** as a future compatibility and porting goal; it is not part of the initial target.
-- Provide a human-usable graphical desktop using **KDE Plasma**.
+- Make **KDE Plasma the primary desktop users see when AIOS starts**, so Mark I is a human-usable desktop OS rather than a terminal-first environment.
+- Integrate the AI assistant into the desktop experience, while retaining ordinary desktop and terminal workflows.
 - Use Gentoo's **AMD64 desktop/Plasma profile**, selecting the OpenRC variant (the profile path does not include `systemd`; for the current 23.0 profile family this is `default/linux/amd64/23.0/desktop/plasma`).
 - Use **OpenClaw** as the initial AI agent framework.
 - Use Gentoo's **Portage** package-management system and the `emerge` tool.
@@ -22,7 +23,7 @@ AIOS is intended to evolve through three generations. The central experiment is 
 - Verify the authenticity and integrity of the Stage 3 archive before extracting it.
 - Use this generation as the development and experimentation environment for proposing and constructing Mark II.
 
-Gentoo is the initial foundation, not necessarily a permanent constraint on every future generation. The Stage 3 archive provides the initial userspace; kernel, bootloader, hardware configuration, desktop integration, and AIOS-specific services still need to be configured. The selected profile provides Gentoo defaults for a Plasma desktop; it does not by itself complete the desktop installation or configuration.
+Gentoo is the initial foundation, not necessarily a permanent constraint on every future generation. The Stage 3 archive provides the initial userspace; kernel, bootloader, hardware configuration, desktop integration, AI-assistant integration, and AIOS-specific services still need to be configured. The selected profile provides Gentoo defaults for a Plasma desktop; it does not by itself complete the desktop installation or configuration.
 
 ## Mark II — AI-designed system on an upstream-compatible Linux kernel
 
@@ -57,7 +58,7 @@ Mark III should build on lessons from the earlier generations rather than forcin
 
 | Generation | Foundation / kernel direction | Primary role |
 |---|---|---|
-| Mark I | Gentoo Linux Stage 3; OpenRC; x86-64 first; KDE Plasma desktop; OpenClaw | Human-usable bootstrap and development environment |
+| Mark I | Gentoo Linux Stage 3; OpenRC; x86-64 first; KDE Plasma as primary desktop; integrated AI assistant; OpenClaw | Human-usable, AI-integrated desktop and development environment |
 | Mark II | LFS-based construction; upstream-compatible Linux kernel | AI-designed operating system and components |
 | Mark III | Kernel architecture open for exploration | Deeper kernel research and possible alternatives |
 
@@ -65,7 +66,7 @@ Mark III should build on lessons from the earlier generations rather than forcin
 
 The following remain to be designed and should not be treated as settled:
 
-- The exact responsibilities and permission model of the Mark I AI environment.
+- The exact responsibilities and permission model of the Mark I AI environment, including how desktop actions are authorized.
 - Mark I's exact Stage 3 variant, kernel configuration, and bootloader.
 - The criteria and timing for adding ARM support.
 - Mark II's detailed architecture, system interfaces, and component boundaries.
