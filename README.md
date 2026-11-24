@@ -28,6 +28,10 @@ AIOS is a project exploring an operating-system environment designed around arti
 
 AIOS is a distinct operating-system project. Shared standards may be adopted where useful, but its architecture and roadmap should be maintained in this repository rather than assumed from other projects.
 
+## Architecture baseline
+
+See [the Mark I architecture decision brief](docs/ARCHITECTURE.md) for the selected Gentoo/OpenRC/Plasma baseline, system layers, AI permission boundaries, reproducible bootstrap requirements, and release gates.
+
 ## Next steps
 
 See the `docs/` directory. The next engineering milestone is to publish a concise architecture decision document defining the intended system boundary, target hardware, initial boot/runtime strategy, and first demonstrable prototype.
