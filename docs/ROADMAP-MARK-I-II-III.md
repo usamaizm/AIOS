@@ -12,6 +12,8 @@ AIOS is intended to evolve through three generations. The central experiment is 
 
 - Bootstrap from **Gentoo Linux**, starting from an official Gentoo Stage 3 archive.
 - Use **OpenRC** as Mark I's init system.
+- Target **x86-64 first** for the initial Mark I implementation.
+- Keep **ARM support** as a future compatibility and porting goal; it is not part of the initial target.
 - Use **OpenClaw** as the initial AI agent framework.
 - Use Gentoo's **Portage** package-management system and the `emerge` tool.
 - Build software from source and use Gentoo's configurable build options and flags where appropriate.
@@ -53,7 +55,7 @@ Mark III should build on lessons from the earlier generations rather than forcin
 
 | Generation | Foundation / kernel direction | Primary role |
 |---|---|---|
-| Mark I | Gentoo Linux Stage 3; OpenRC; OpenClaw | Bootstrap and development environment |
+| Mark I | Gentoo Linux Stage 3; OpenRC; x86-64 first; OpenClaw | Bootstrap and development environment |
 | Mark II | LFS-based construction; upstream-compatible Linux kernel | AI-designed operating system and components |
 | Mark III | Kernel architecture open for exploration | Deeper kernel research and possible alternatives |
 
@@ -62,10 +64,11 @@ Mark III should build on lessons from the earlier generations rather than forcin
 The following remain to be designed and should not be treated as settled:
 
 - The exact responsibilities and permission model of the Mark I AI environment.
-- Mark I's target CPU architectures, Stage 3 variant, kernel configuration, and bootloader.
+- Mark I's exact x86-64 Stage 3 variant, kernel configuration, and bootloader.
+- The criteria and timing for adding ARM support.
 - Mark II's detailed architecture, system interfaces, and component boundaries.
 - How and when a new package manager should replace or coexist with Portage.
 - Mark III's kernel architecture and the criteria for choosing one.
-- Supported hardware architectures and the maturity targets for each generation.
+- Hardware support and maturity targets for each generation.
 
 ---
