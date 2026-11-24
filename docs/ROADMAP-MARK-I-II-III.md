@@ -10,13 +10,15 @@ AIOS is intended to evolve through three generations. The central experiment is 
 
 **Purpose:** Establish a practical environment that can help research, design, build, and test Mark II.
 
-- Bootstrap from **Gentoo Linux**.
+- Bootstrap from **Gentoo Linux**, starting from an official Gentoo Stage 3 archive.
+- Use **OpenRC** as Mark I's init system.
 - Use **OpenClaw** as the initial AI agent framework.
 - Use Gentoo's **Portage** package-management system and the `emerge` tool.
 - Build software from source and use Gentoo's configurable build options and flags where appropriate.
+- Verify the authenticity and integrity of the Stage 3 archive before extracting it.
 - Use this generation as the development and experimentation environment for proposing and constructing Mark II.
 
-Gentoo is the initial foundation, not necessarily a permanent constraint on every future generation.
+Gentoo is the initial foundation, not necessarily a permanent constraint on every future generation. The Stage 3 archive provides the initial userspace; kernel, bootloader, hardware configuration, and AIOS-specific services still need to be configured.
 
 ## Mark II — AI-designed system on an upstream-compatible Linux kernel
 
@@ -51,7 +53,7 @@ Mark III should build on lessons from the earlier generations rather than forcin
 
 | Generation | Foundation / kernel direction | Primary role |
 |---|---|---|
-| Mark I | Gentoo Linux; OpenClaw | Bootstrap and development environment |
+| Mark I | Gentoo Linux Stage 3; OpenRC; OpenClaw | Bootstrap and development environment |
 | Mark II | LFS-based construction; upstream-compatible Linux kernel | AI-designed operating system and components |
 | Mark III | Kernel architecture open for exploration | Deeper kernel research and possible alternatives |
 
@@ -60,6 +62,7 @@ Mark III should build on lessons from the earlier generations rather than forcin
 The following remain to be designed and should not be treated as settled:
 
 - The exact responsibilities and permission model of the Mark I AI environment.
+- Mark I's target CPU architectures, Stage 3 variant, kernel configuration, and bootloader.
 - Mark II's detailed architecture, system interfaces, and component boundaries.
 - How and when a new package manager should replace or coexist with Portage.
 - Mark III's kernel architecture and the criteria for choosing one.
