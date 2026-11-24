@@ -11,6 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate shell syntax
-        run: bash -n scripts/verify-stage3.sh
+        run: |
+          bash -n scripts/verify-stage3.sh
+          bash -n tests/test-verify-stage3.sh
       - name: Validate usage path
         run: scripts/verify-stage3.sh --help
+      - name: Test checksum success and failure paths
+        run: bash tests/test-verify-stage3.sh
