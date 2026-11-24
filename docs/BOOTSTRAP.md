@@ -22,10 +22,11 @@ Always select the current artifact from Gentoo's official distribution directory
 scripts/verify-stage3.sh \
   /path/to/stage3-amd64-RELEASE-openrc.tar.xz \
   /path/to/stage3-amd64-RELEASE-openrc.tar.xz.DIGESTS.asc \
-  /path/to/trusted-gentoo-release.gpg
+  /path/to/trusted-gentoo-release.gpg \\
+  VERIFIED_GENTOO_RELEASE_KEY_FINGERPRINT
 ```
 
-The script uses `gpgv` against the supplied keyring, then checks the SHA-512 entry for the exact archive filename. Both checks must pass. A successful checksum alone does not establish authenticity; a valid signature from an unverified key is not a trustworthy release chain.
+The script uses `gpgv` against the supplied keyring, verifies that the signing or primary-key fingerprint matches the independently checked expected fingerprint, then checks the SHA-512 entry for the exact archive filename. All three checks must pass. A successful checksum alone does not establish authenticity; a valid signature from an unverified key is not a trustworthy release chain.
 
 ## After verification
 
@@ -37,5 +38,5 @@ Do not run this verification utility as a substitute for reviewing the Gentoo Ha
 
 - The script verifies only the supplied archive and its signed digest entry.
 - It does not fetch keys, establish key trust, download artifacts, inspect archive contents, or prove reproducibility.
-- The trusted keyring must be prepared and fingerprint-checked by the operator.
+- The trusted keyring must be prepared by the operator, and the expected fingerprint must be checked independently against Gentoo's official release-signature information.
 - The script is a local verification step, not an installer or bootable image builder.
