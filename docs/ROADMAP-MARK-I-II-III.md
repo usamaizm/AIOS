@@ -6,6 +6,16 @@
 
 AIOS is intended to evolve through three generations. The central experiment is to use an earlier AI-enabled system to help design and build a later operating system, while keeping consequential architecture and permission decisions under human authorization.
 
+## Relationship to OpenOS and FreeOS
+
+AIOS is a separate project with its own generational strategy. It may learn from the other projects, but it does not automatically inherit either project's software-admission policy or license.
+
+- **OpenOS** is the strict software-freedom and hardware-transparency project: official releases exclude proprietary applications, drivers, firmware, and other binary blobs.
+- **FreeOS** prioritizes broad compatibility and user choice: proprietary components may be included or offered when useful and legally redistributable, with clear identification.
+- **AIOS** is focused on an AI-assisted, progressively AI-designed operating system. Its component-admission policy, including the treatment of proprietary drivers and firmware, remains an explicit design question and must be decided separately rather than inferred from OpenOS or FreeOS.
+
+The projects can share research, engineering practices, and lessons learned while retaining distinct goals. In particular, AIOS can adopt useful practices from OpenOS around transparency and from FreeOS around optional, modular capabilities without silently adopting either project's complete policy.
+
 ## Mark I — Bootstrap generation
 
 **Purpose:** Establish a practical environment that can help research, design, build, and test Mark II.
