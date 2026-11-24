@@ -1,0 +1,16 @@
+name: AIOS bootstrap utility checks
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  shell-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate shell syntax
+        run: bash -n scripts/verify-stage3.sh
+      - name: Validate usage path
+        run: scripts/verify-stage3.sh --help
