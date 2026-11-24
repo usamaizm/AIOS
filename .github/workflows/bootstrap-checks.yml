@@ -15,6 +15,6 @@ jobs:
           bash -n scripts/verify-stage3.sh
           bash -n tests/test-verify-stage3.sh
       - name: Validate usage path
-        run: scripts/verify-stage3.sh --help
+        run: bash scripts/verify-stage3.sh --help
       - name: Test checksum success and failure paths
         run: bash tests/test-verify-stage3.sh
