@@ -19,18 +19,18 @@ printf 'trusted test keyring placeholder\n' > "$tmp/release.gpg"
 digest=$(sha512sum "$tmp/stage3.tar.xz" | awk '{print $1}')
 printf '# SHA512 HASH\n%s  stage3.tar.xz\n# BLAKE2B512 HASH\n' "$digest" > "$tmp/stage3.tar.xz.DIGESTS.asc"
 
-PATH="$tmp/bin:$PATH" "$script" \
+PATH="$tmp/bin:$PATH" bash "$script" \
   "$tmp/stage3.tar.xz" "$tmp/stage3.tar.xz.DIGESTS.asc" "$tmp/release.gpg"
 
 printf 'tampered archive\n' > "$tmp/stage3.tar.xz"
-if PATH="$tmp/bin:$PATH" "$script" \
+if PATH="$tmp/bin:$PATH" bash "$script" \
   "$tmp/stage3.tar.xz" "$tmp/stage3.tar.xz.DIGESTS.asc" "$tmp/release.gpg"; then
     printf 'Tampered archive unexpectedly passed digest verification\n' >&2
     exit 1
 fi
 
 printf 'missing archive\n' > "$tmp/other.tar.xz"
-if PATH="$tmp/bin:$PATH" "$script" \
+if PATH="$tmp/bin:$PATH" bash "$script" \
   "$tmp/other.tar.xz" "$tmp/stage3.tar.xz.DIGESTS.asc" "$tmp/release.gpg"; then
     printf 'Archive without a matching digest unexpectedly passed\n' >&2
     exit 1
