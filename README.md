@@ -30,7 +30,7 @@ AIOS is a distinct operating-system project. Shared standards may be adopted whe
 
 ## Architecture baseline
 
-See [the Mark I architecture decision brief](docs/ARCHITECTURE.md) for the selected Gentoo/OpenRC/Plasma baseline, system layers, AI permission boundaries, reproducible bootstrap requirements, and release gates.
+See [the Mark I architecture decision brief](docs/ARCHITECTURE.md) for the selected Gentoo/OpenRC/Plasma baseline, system layers, AI permission boundaries, reproducible bootstrap requirements, and release gates. The first bootstrap utility, [Stage 3 signature and checksum verification](docs/BOOTSTRAP.md), is available under `scripts/`.
 
 ## Next steps
 
